@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class Mover : MonoBehaviour
     void Start()
     {
        player =  GetComponent<NavMeshAgent>();
+        player.speed = playerSpeed;
     }
 
 
@@ -22,11 +24,16 @@ public class Mover : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            lastRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            MoveToCursor();
         }
 
-        Debug.DrawRay(lastRay.origin, lastRay.direction * 100);
-        player.speed = playerSpeed;
-        player.destination = transformTarget.transform.position;
+    }
+
+    private void MoveToCursor()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //RaycastHit 
+        //Physics.Raycast()
+       
     }
 }
