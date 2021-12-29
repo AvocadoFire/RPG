@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class Mover : MonoBehaviour
 {
-    [SerializeField] GameObject transformTarget;
+   // [SerializeField] GameObject transformTarget;
     [SerializeField] float playerSpeed = 5f;
     NavMeshAgent player;
     Ray lastRay;
