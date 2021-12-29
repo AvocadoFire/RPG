@@ -10,8 +10,6 @@ public class Mover : MonoBehaviour
     [SerializeField] float playerSpeed = 5f;
     NavMeshAgent player;
     Ray lastRay;
-
-
     void Start()
     {
        player =  GetComponent<NavMeshAgent>();
@@ -32,8 +30,12 @@ public class Mover : MonoBehaviour
     private void MoveToCursor()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //RaycastHit 
-        //Physics.Raycast()
+        RaycastHit hit;
+        bool hasHit = Physics.Raycast(ray, out hit);
+         if (hasHit)
+        {
+            player.destination = hit.point;
+        }
        
     }
 }
