@@ -6,25 +6,23 @@ using UnityEngine.AI;
 
 public class Mover : MonoBehaviour
 {
-   // [SerializeField] GameObject transformTarget;
-    [SerializeField] float playerSpeed = 5f;
-    NavMeshAgent player;
+    Animator anim;
+    NavMeshAgent playerNav;
     Ray lastRay;
+    float speed;
     void Start()
     {
-       player =  GetComponent<NavMeshAgent>();
-        player.speed = playerSpeed;
+       playerNav =  GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
     }
-
 
     void Update()
     {
-
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             MoveToCursor();
         }
-
+        UpdateAnimator();
     }
 
     private void MoveToCursor()
@@ -34,8 +32,15 @@ public class Mover : MonoBehaviour
         bool hasHit = Physics.Raycast(ray, out hit);
          if (hasHit)
         {
-            player.destination = hit.point;
+            playerNav.destination = hit.point;
         }
-       
+    }
+
+    void UpdateAnimator()
+    {
+        var vel = playerNav.velocity;
+        var localVelocity = transform.InverseTransformDirection(vel);
+        float speed = localVelocity.z;
+        anim.SetFloat("forwardSpeed", speed);
     }
 }
