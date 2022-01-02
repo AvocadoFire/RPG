@@ -32,8 +32,13 @@ public class Mover : MonoBehaviour
         bool hasHit = Physics.Raycast(ray, out hit);
          if (hasHit)
         {
-            playerNav.destination = hit.point;
+            MoveTo(hit);
         }
+    }
+
+    private void MoveTo(RaycastHit hit)
+    {
+        playerNav.destination = hit.point;
     }
 
     void UpdateAnimator()
