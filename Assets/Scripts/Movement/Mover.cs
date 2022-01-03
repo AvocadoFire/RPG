@@ -10,6 +10,13 @@ namespace RPG.Movement
     {
         Ray lastRay;
         float speed;
+        NavMeshAgent navMeshAgent;
+
+        private void Awake()
+        {
+            navMeshAgent = GetComponent<NavMeshAgent>();
+        }
+
         void Update()
         {
             UpdateAnimator();
@@ -17,12 +24,17 @@ namespace RPG.Movement
 
         public void MoveTo(Vector3 destination)
         {
-            GetComponent<NavMeshAgent>().destination = destination;
+            navMeshAgent.destination = destination;
+            navMeshAgent.isStopped = false;
         }
 
+        public void Stop()
+        {
+            navMeshAgent.isStopped = true;
+        }
         void UpdateAnimator()
         {
-            var vel = GetComponent<NavMeshAgent>().velocity;
+            var vel = navMeshAgent.velocity;
             var localVelocity = transform.InverseTransformDirection(vel);
             float speed = localVelocity.z;
             GetComponentInChildren<Animator>().SetFloat("forwardSpeed", speed);
