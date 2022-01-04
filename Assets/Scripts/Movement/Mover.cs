@@ -1,3 +1,5 @@
+using RPG.Combat;
+using RPG.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,6 +24,12 @@ namespace RPG.Movement
             UpdateAnimator();
         }
 
+        public void StartMoveAction(Vector3 destination)
+        {
+            GetComponent<ActionScheduler>().StartAction(this);
+            GetComponent<Fighter>().Cancel();
+            MoveTo(destination);
+        }
         public void MoveTo(Vector3 destination)
         {
             navMeshAgent.destination = destination;
@@ -31,7 +39,7 @@ namespace RPG.Movement
         public void Stop()
         {
             navMeshAgent.isStopped = true;
-        }
+         }
         void UpdateAnimator()
         {
             var vel = navMeshAgent.velocity;

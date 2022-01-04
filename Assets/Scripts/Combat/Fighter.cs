@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Movement;
+using RPG.Core;
 
 namespace RPG.Combat
 {
@@ -9,25 +10,36 @@ namespace RPG.Combat
     {
         [SerializeField] float weaponRange = 2f;
         Transform target;
-      
 
         private void Update()
         {
-            if (target!= null)
+            if (target == null) return;
+
+            if (target != null && !GetIsInRange())
             {
                 GetComponent<Mover>().MoveTo(target.position);
-                if (transform.position.z - target.position.z < weaponRange)
-                { 
-                    GetComponent<Mover>().Stop();
-                }
             }
-            
+            else
+            {
+                GetComponent<Mover>().Stop();
+            }
+        }
+
+        private bool GetIsInRange()
+        {
+            return Vector3.Distance(transform.position, target.position) < weaponRange;
         }
 
         public void Attack(CombatTarget combatTarget)
         {
+            GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.transform;
             print("OMG So cute!!");
+        }
+        
+        public void Cancel()
+        {
+            target = null;
         }
     }
 }
