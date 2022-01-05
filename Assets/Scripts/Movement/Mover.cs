@@ -8,7 +8,7 @@ using UnityEngine.AI;
 
 namespace RPG.Movement
 {
-    public class Mover : MonoBehaviour
+    public class Mover : MonoBehaviour, IAction
     {
         Ray lastRay;
         float speed;
@@ -27,7 +27,6 @@ namespace RPG.Movement
         public void StartMoveAction(Vector3 destination)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            GetComponent<Fighter>().Cancel();
             MoveTo(destination);
         }
         public void MoveTo(Vector3 destination)
@@ -36,10 +35,11 @@ namespace RPG.Movement
             navMeshAgent.isStopped = false;
         }
 
-        public void Stop()
+        public void Cancel()
         {
             navMeshAgent.isStopped = true;
          }
+
         void UpdateAnimator()
         {
             var vel = navMeshAgent.velocity;
@@ -47,6 +47,7 @@ namespace RPG.Movement
             float speed = localVelocity.z;
             GetComponentInChildren<Animator>().SetFloat("forwardSpeed", speed);
         }
+
     }
 
 }

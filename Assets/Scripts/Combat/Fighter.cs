@@ -3,25 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
+using System;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour
+    public class Fighter : MonoBehaviour, IAction
     {
+        [SerializeField] float timeBetweenAttacks = 2f;
         [SerializeField] float weaponRange = 2f;
+        [SerializeField] Animator anim;
+
         Transform target;
+        float timeSinceLastAttack = 3f;
 
         private void Update()
         {
+            timeSinceLastAttack += Time.deltaTime;
             if (target == null) return;
-
-            if (target != null && !GetIsInRange())
-            {
+            
+            if (!GetIsInRange())
+           {
                 GetComponent<Mover>().MoveTo(target.position);
-            }
-            else
+           }
+           else
             {
-                GetComponent<Mover>().Stop();
+                GetComponent<Mover>().Cancel();
+                AttackBehavior();
+            }
+        }
+
+        private void AttackBehavior()
+        {
+            if (timeSinceLastAttack > timeBetweenAttacks)
+            {
+                anim.SetTrigger("attack");
+                Debug.Log("attack here");
+                timeSinceLastAttack = 0;
             }
         }
 
@@ -40,7 +57,15 @@ namespace RPG.Combat
         public void Cancel()
         {
             target = null;
+            anim.ResetTrigger("attack");
         }
+
+        //animation event (not in mine though)
+        void Hit()
+        {
+            return;
+        }
+
     }
 }
 

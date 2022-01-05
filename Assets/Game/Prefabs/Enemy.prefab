@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8291782826436555597}
   - component: {fileID: 8291782826436555598}
+  - component: {fileID: 3974352935611798208}
   - component: {fileID: 1854582532}
-  - component: {fileID: 1854582531}
+  - component: {fileID: 1432943549812987003}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -46,6 +47,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0317d25eac54f9346bf9cf6dfe38d274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3974352935611798208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8291782826436555599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97417b65c9a2fb4c94e3bb57a5ebeef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
 --- !u!54 &1854582532
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -62,7 +76,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &1854582531
+--- !u!136 &1432943549812987003
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,12 +84,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8291782826436555599}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.36812934
-  m_Height: 0.96174854
+  m_Radius: 0.7100833
+  m_Height: 1.4201667
   m_Direction: 1
-  m_Center: {x: -0.012624379, y: -0.095235616, z: -0.23036432}
+  m_Center: {x: 0.078774214, y: -0.24727702, z: 0.003381491}
 --- !u!1001 &8291782828117081528
 PrefabInstance:
   m_ObjectHideFlags: 0
