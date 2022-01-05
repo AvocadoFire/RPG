@@ -45,7 +45,7 @@ namespace RPG.Movement
             var vel = navMeshAgent.velocity;
             var localVelocity = transform.InverseTransformDirection(vel);
             float speed = localVelocity.z;
-            GetComponentInChildren<Animator>().SetFloat("forwardSpeed", speed);
+            GetComponent<Animator>().SetFloat("forwardSpeed", speed);
         }
 
     }

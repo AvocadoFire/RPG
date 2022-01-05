@@ -631,11 +631,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1270246581 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8320377870934747561, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
-  m_PrefabInstance: {fileID: 2458259780165438255}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1309994524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -969,18 +964,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1153201323, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 1270246581}
-    - target: {fileID: 1153201323, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
-      propertyPath: weaponRange
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1153201323, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
-      propertyPath: timeBetweenAttacks
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1596977713410140492, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1043,10 +1026,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1432943549812987003, guid: ccd7504a599012046818da6aae65a845, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8291782826436555597, guid: ccd7504a599012046818da6aae65a845, type: 3}
       propertyPath: m_RootOrder
       value: 4
