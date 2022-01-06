@@ -39,7 +39,7 @@ namespace RPG.Combat
         {
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
-                //This will trigger the Hit event
+                //This will trigger the Hit() event
                 anim.SetTrigger("attack");
                 timeSinceLastAttack = 0;
             }
