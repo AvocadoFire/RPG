@@ -22,7 +22,11 @@ namespace RPG.Combat
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
-            if (target == null) return;
+            if (target == null || target.GetComponent<Health>().isDead)
+            {
+                anim.ResetTrigger("attack"); //finish attack animation
+                return;
+            }
             
             if (!GetIsInRange())
            {
@@ -48,7 +52,11 @@ namespace RPG.Combat
         //animation event
         void Hit()
         {
-            if (target == null) return;
+            if (target == null ) 
+            {
+               anim.SetTrigger("stopAttack"); //quick stop attack animation
+                return; 
+            }
             target.GetComponent<Health>().TakeDamage(weaponDamage);
         }
 
@@ -61,13 +69,12 @@ namespace RPG.Combat
         {
             GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.transform;
-            print("OMG So cute!!");
         }
         
         public void Cancel()
         {
             target = null;
-            anim.ResetTrigger("attack");
+            anim.SetTrigger("stopAttack");
         }
 
     }
