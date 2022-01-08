@@ -65,12 +65,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1153201323, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
+      propertyPath: damping
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153201323, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
+      propertyPath: audioHit
+      value: 
+      objectReference: {fileID: 8300000, guid: f5965d3ad3cf86b4e9d7863e570bb11a, type: 3}
+    - target: {fileID: 1153201323, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
       propertyPath: weaponRange
-      value: 2.1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1153201323, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
       propertyPath: timeBetweenAttacks
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1709954438, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
       propertyPath: m_Enabled
@@ -98,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1596977713410140499, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.29
+      value: 10.59
       objectReference: {fileID: 0}
     - target: {fileID: 1596977713410140499, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -106,7 +114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1596977713410140499, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.29
+      value: 5.33
       objectReference: {fileID: 0}
     - target: {fileID: 1596977713410140499, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -136,6 +144,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7232791498431939623, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
+      propertyPath: audioKill
+      value: 
+      objectReference: {fileID: 8300000, guid: cba0a78b5135154458857b91473a9042, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
 --- !u!1 &6999592239133690744 stripped

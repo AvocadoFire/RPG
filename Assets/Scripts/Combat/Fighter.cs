@@ -12,41 +12,64 @@ namespace RPG.Combat
         [SerializeField] float timeBetweenAttacks = 2f;
         [SerializeField] float weaponRange = 2f;
         [SerializeField] float weaponDamage = 5f;
+        [SerializeField] float damping = .5f;
+        [SerializeField] AudioClip audioHit;
+
+        AudioSource audioSource;
         Animator anim;
-        Transform target;
+        Health target;
         float timeSinceLastAttack = 3f;
+
+        private void Awake()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
         private void Start()
         {
             anim = GetComponent<Animator>();
+            //"attack" == finish attack animation (has exit time)
+            //"stopAttack" = stop animation (no exit time)
         }
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
-            if (target == null || target.GetComponent<Health>().isDead)
+
+            if (target == null || target.IsDead())
             {
-                anim.ResetTrigger("attack"); //finish attack animation
+                StopAttack();
                 return;
             }
-            
+
             if (!GetIsInRange())
-           {
-                GetComponent<Mover>().MoveTo(target.position);
-           }
-           else
+            {
+                transform.LookAt(target.transform.position);
+                GetComponent<Mover>().MoveTo(target.transform.position);
+            }
+            else
             {
                 GetComponent<Mover>().Cancel();
                 AttackBehavior();
             }
         }
-
         private void AttackBehavior()
         {
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
+                transform.LookAt(target.transform.position);
+                //rotates enemy target toward player
+                var rotation = Quaternion.LookRotation(gameObject.transform.position - target.transform.position);
+                target.transform.rotation = Quaternion.Slerp(target.transform.rotation, rotation, Time.deltaTime * damping);
+
                 //This will trigger the Hit() event
-                anim.SetTrigger("attack");
+                TriggerAtack();
                 timeSinceLastAttack = 0;
             }
+        }
+
+        private void TriggerAtack()
+        {
+            anim.ResetTrigger("stopAttack");
+            anim.SetTrigger("attack");
         }
 
         //animation event
@@ -54,29 +77,44 @@ namespace RPG.Combat
         {
             if (target == null ) 
             {
-               anim.SetTrigger("stopAttack"); //quick stop attack animation
-                return; 
+                StopAttack();
+               return; 
             }
-            target.GetComponent<Health>().TakeDamage(weaponDamage);
+            target.TakeDamage(weaponDamage);
+            audioSource.PlayOneShot(audioHit);
         }
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.position) < weaponRange;
+            return Vector3.Distance
+                (transform.position, target.transform.position) < weaponRange;
+        }
+
+        public bool CanAttack(CombatTarget combatTarget)
+        {
+            Health targetHealth = GetComponent<Health>();
+            if (combatTarget == null) { print("null"); return false; }
+            if (targetHealth.IsDead()) { print("dead"); return false; }
+            print("neither"); return true;
         }
 
         public void Attack(CombatTarget combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            target = combatTarget.transform;
+            target = combatTarget.GetComponent<Health>();
         }
         
         public void Cancel()
         {
             target = null;
-            anim.SetTrigger("stopAttack");
+            StopAttack();
         }
 
+        private void StopAttack()
+        {
+            anim.ResetTrigger("attack");
+            anim.SetTrigger("stopAttack");
+        }
     }
 }
 
