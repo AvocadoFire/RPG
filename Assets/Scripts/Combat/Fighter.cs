@@ -12,13 +12,12 @@ namespace RPG.Combat
         [SerializeField] float timeBetweenAttacks = 2f;
         [SerializeField] float weaponRange = 2f;
         [SerializeField] float weaponDamage = 5f;
-        [SerializeField] float damping = .5f;
         [SerializeField] AudioClip audioHit;
 
         AudioSource audioSource;
         Animator anim;
         Health target;
-        float timeSinceLastAttack = 3f;
+        float timeSinceLastAttack = Mathf.Infinity;
 
         private void Awake()
         {
@@ -56,9 +55,6 @@ namespace RPG.Combat
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
                 transform.LookAt(target.transform.position);
-                //rotates enemy target toward player
-                var rotation = Quaternion.LookRotation(gameObject.transform.position - target.transform.position);
-                target.transform.rotation = Quaternion.Slerp(target.transform.rotation, rotation, Time.deltaTime * damping);
 
                 //This will trigger the Hit() event
                 TriggerAtack();

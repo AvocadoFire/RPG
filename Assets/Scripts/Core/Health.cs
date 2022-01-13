@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Combat
+
+namespace RPG.Core
 {
     public class Health : MonoBehaviour
     {
@@ -30,12 +31,20 @@ namespace RPG.Combat
                 healthPoints = Mathf.Max(healthPoints - damage, 0);
                 print(healthPoints);
             }
-            if (!isDead && healthPoints <= Mathf.Epsilon)
+            if (healthPoints <= Mathf.Epsilon)
             {
-                anim.SetBool("die", true);
-                isDead = true;
-                audioSource.PlayOneShot(audioKill);
+                Die();
             }
+        }
+
+        private void Die()
+        {
+            if (isDead) return;
+
+            anim.SetBool("die", true);
+            isDead = true;
+            audioSource.PlayOneShot(audioKill);
+            GetComponent<ActionScheduler>().CancelCurrentAction();
         }
     }
 }

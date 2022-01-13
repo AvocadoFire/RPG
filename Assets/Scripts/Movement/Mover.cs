@@ -13,14 +13,17 @@ namespace RPG.Movement
         Ray lastRay;
         float speed;
         NavMeshAgent navMeshAgent;
+        Health health;
 
-        private void Awake()
+        private void Start()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
+            health = GetComponent<Health>();
         }
 
         void Update()
         {
+            navMeshAgent.enabled = !health.IsDead();
             UpdateAnimator();
         }
 
@@ -47,7 +50,6 @@ namespace RPG.Movement
             float speed = localVelocity.z;
             GetComponent<Animator>().SetFloat("forwardSpeed", speed);
         }
-
     }
 
 }
