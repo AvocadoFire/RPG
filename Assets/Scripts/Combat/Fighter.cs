@@ -90,15 +90,15 @@ namespace RPG.Combat
                 (transform.position, target.transform.position) < weaponRange;
         }
 
-        public bool CanAttack(CombatTarget combatTarget)
+        public bool CanAttack(GameObject combatTarget)
         {
             Health targetHealth = GetComponent<Health>();
-            if (combatTarget == null) { print("null"); return false; }
-            if (targetHealth.IsDead()) { print("dead"); return false; }
-            print("neither"); return true;
+            if (combatTarget == null) {return false; }
+            if (targetHealth.IsDead()) {return false; }
+            return true;
         }
 
-        public void Attack(CombatTarget combatTarget)
+        public void Attack(GameObject combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.GetComponent<Health>();

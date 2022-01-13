@@ -24,6 +24,10 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1596977713410140498, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
+      propertyPath: m_Speed
+      value: 4.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596977713410140498, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
       propertyPath: m_Height
       value: 1.48
       objectReference: {fileID: 0}
@@ -133,6 +137,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0317d25eac54f9346bf9cf6dfe38d274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6446657713439581410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5955309491817605970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02bfa83b0946054db1107054bb08bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseDistance: 5
 --- !u!1001 &7076120740799131270
 PrefabInstance:
   m_ObjectHideFlags: 0
