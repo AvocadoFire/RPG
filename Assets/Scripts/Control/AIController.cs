@@ -11,24 +11,26 @@ namespace RPG.Control
     {
         [SerializeField] float chaseDistance = 5f;
         [SerializeField] float suspicionTime = 2f;
+        [SerializeField] float waypointTolerance = 1f;
         [SerializeField] PatrolPath patrolPath;
 
         Fighter fighter;
         GameObject player;
         Health health;
         Mover mover;
-        int wayPointNum = 0;
+        int currentWaypointIndex = 0;
 
 
         //Vector3 guardPosition;
         float timeSinceLastSawPlayer = Mathf.Infinity;
         private void Start()
         {
+            player = GameObject.FindWithTag("Player");
             health = GetComponent<Health>();
             fighter = GetComponent<Fighter>();
-            player = GameObject.FindWithTag("Player");
-            this.transform.position = patrolPath.GetWaypoint(0);
             mover = GetComponent<Mover>();
+
+            this.transform.position = patrolPath.GetWaypoint(0);
         }
 
         private void Update()
@@ -49,7 +51,7 @@ namespace RPG.Control
             }
             else
             {
-                GuardBehavior();
+                PatrolBehavior();
             }
         }
 
@@ -57,18 +59,28 @@ namespace RPG.Control
         {
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }
-
-        //  mover.StartMoveAction(guardPosition);
-        // for (int i = 0; i < transform.childCount; i++)
-        private void GuardBehavior()
+        private void PatrolBehavior()
         {
-            Vector3 wayPoint = patrolPath.GetNextWaypoint(wayPointNum);
-            mover.StartMoveAction(wayPoint);
-            if (transform.position == wayPoint)
-             {
-                wayPointNum = patrolPath.GetNextIndex(wayPointNum);
-             }
+            if (patrolPath == null) return;
+
+            mover.StartMoveAction(patrolPath.GetNextWaypoint(currentWaypointIndex));
+
+            if (AtWaypoint())
+            {
+                CycleWaypoint();
+            }
         }
+
+        private void CycleWaypoint()
+        {
+            currentWaypointIndex = patrolPath.GetNextIndex(currentWaypointIndex);
+        }
+
+        private bool AtWaypoint()
+        {
+            return transform.position == patrolPath.GetNextWaypoint(currentWaypointIndex);
+        }
+
         private void AttackBehavior()
         {
             fighter.Attack(player);

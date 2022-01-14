@@ -32,11 +32,6 @@ namespace RPG.Control
 
                 if (!GetComponent<Fighter>().CanAttack(target.gameObject))
                 { 
-                    continue;
-                }
-                
-                if (Input.GetMouseButtonDown(0))
-                {
                     GetComponent<Fighter>().Attack(target.gameObject);
                 }
                 return true;
