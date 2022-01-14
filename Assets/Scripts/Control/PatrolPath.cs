@@ -13,8 +13,8 @@ namespace RPG.Control
             for (int i = 0; i < transform.childCount; i++)
             {
                 int j;
-                if (i == 0) { Gizmos.color = Color.green; }
-                else if (i == 1) { Gizmos.color = Color.blue; }
+                if (i == 0) { Gizmos.color = Color.red; }
+                else if (i == 1) { Gizmos.color = Color.yellow; }
                 else Gizmos.color = Color.white;
                 Gizmos.DrawSphere(GetWaypoint(i), waypointGizmoRadius);
                 j = GetNextIndex(i);
