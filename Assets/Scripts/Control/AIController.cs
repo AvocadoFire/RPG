@@ -11,19 +11,23 @@ namespace RPG.Control
     {
         [SerializeField] float chaseDistance = 5f;
         [SerializeField] float suspicionTime = 2f;
+        [SerializeField] PatrolPath patrolPath;
+
         Fighter fighter;
         GameObject player;
         Health health;
         Mover mover;
+        int wayPointNum = 0;
 
-        Vector3 guardPosition;
+
+        //Vector3 guardPosition;
         float timeSinceLastSawPlayer = Mathf.Infinity;
         private void Start()
         {
             health = GetComponent<Health>();
             fighter = GetComponent<Fighter>();
             player = GameObject.FindWithTag("Player");
-            guardPosition = transform.position;
+            this.transform.position = patrolPath.GetWaypoint(0);
             mover = GetComponent<Mover>();
         }
 
@@ -47,7 +51,6 @@ namespace RPG.Control
             {
                 GuardBehavior();
             }
-            
         }
 
         private void SuspicionBehavior()
@@ -55,11 +58,17 @@ namespace RPG.Control
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
+        //  mover.StartMoveAction(guardPosition);
+        // for (int i = 0; i < transform.childCount; i++)
         private void GuardBehavior()
         {
-            mover.StartMoveAction(guardPosition);
+            Vector3 wayPoint = patrolPath.GetNextWaypoint(wayPointNum);
+            mover.StartMoveAction(wayPoint);
+            if (transform.position == wayPoint)
+             {
+                wayPointNum = patrolPath.GetNextIndex(wayPointNum);
+             }
         }
-
         private void AttackBehavior()
         {
             fighter.Attack(player);
