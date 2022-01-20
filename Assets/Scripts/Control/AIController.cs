@@ -34,17 +34,14 @@ namespace RPG.Control
 
         private void Update()
         {
-            timeSinceAtWaypoint += Time.deltaTime;
-            timeSinceLastSawPlayer += Time.deltaTime;
+            UpdateTimers();
 
             if (health.IsDead()) return;
 
             if (InAttackRangeOfPlayer() && fighter.CanAttack(player))
             {
                 AttackBehavior();
-                timeSinceLastSawPlayer = 0;
             }
-
             else if (timeSinceLastSawPlayer < suspicionTime)
             {
                 SuspicionBehavior();
@@ -53,6 +50,12 @@ namespace RPG.Control
             {
                 PatrolBehavior();
             }
+        }
+
+        private void UpdateTimers()
+        {
+            timeSinceAtWaypoint += Time.deltaTime;
+            timeSinceLastSawPlayer += Time.deltaTime;
         }
 
         private void SuspicionBehavior()
@@ -93,6 +96,7 @@ namespace RPG.Control
         private void AttackBehavior()
         {
             fighter.Attack(player);
+            timeSinceLastSawPlayer = 0;
         }
 
         private bool InAttackRangeOfPlayer()

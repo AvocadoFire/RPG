@@ -1,0 +1,24 @@
+Testing storing in unity
+
+Story for RPG
+
+Haves:
+Player
+Enemies
+Enemy follow line
+
+
+To make:
+village
+houses/colors
+Player
+enemies
+
+
+Mystery outside village
+elders/guards don't want me to leave
+I can 
+1. sneak out - find other exit
+2. talk to the guards
+3. incapcitate guards
+
