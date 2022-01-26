@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1153201323, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
+      propertyPath: weaponDamage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1709954438, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -83,6 +87,10 @@ PrefabInstance:
       propertyPath: audioKill
       value: 
       objectReference: {fileID: 8300000, guid: cba0a78b5135154458857b91473a9042, type: 3}
+    - target: {fileID: 7232791498431939623, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
+      propertyPath: healthPoints
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
 --- !u!1 &5955309491817605970 stripped
@@ -151,6 +159,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseDistance: 3
   suspicionTime: 4
+  waypointTolerance: 1
+  waypointDwellTime: 2
   patrolPath: {fileID: 0}
 --- !u!1001 &7076120740799131270
 PrefabInstance:

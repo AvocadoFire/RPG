@@ -87,7 +87,9 @@ namespace RPG.Control
 
         private bool CheckAtWaypoint()
         {
-            return transform.position == patrolPath.GetNextWaypoint(currentWaypointIndex);
+            var nextWaypoint = patrolPath.GetNextWaypoint(currentWaypointIndex);
+            float distanceToWaypoint = Vector3.Distance(transform.position, nextWaypoint);
+            return distanceToWaypoint < waypointTolerance;
         }
 
         private void AttackBehavior()
