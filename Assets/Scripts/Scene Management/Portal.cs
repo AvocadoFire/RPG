@@ -18,7 +18,6 @@ namespace RPG.SceneManagement
         [SerializeField] DestinationIdentifier destination;
         DestinationIdentifier currentDestination;
 
-
         private void OnTriggerEnter(Collider otherCollider)
         {
             if (!otherCollider.CompareTag("Player")) return;
@@ -30,7 +29,13 @@ namespace RPG.SceneManagement
 
         private IEnumerator Transition()
         {
-            Object.DontDestroyOnLoad(gameObject);
+            if (sceneToLoad < 0)
+            {
+                Debug.LogError("Scene to load not set.");
+                yield break;
+            }
+
+            DontDestroyOnLoad(gameObject);
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
