@@ -7,20 +7,12 @@ namespace RPG.SceneManagement
 {
     public class Fader : MonoBehaviour
     {
-        [SerializeField] float fadeOutTime = 3f;
-        [SerializeField] float fadeInTime = 1f;
+
         CanvasGroup canvasGroup;
 
         private void Start()
         {
             canvasGroup = GetComponent<CanvasGroup>();
-            StartCoroutine(FadeOutIn());
-        }
-
-        IEnumerator FadeOutIn()
-        {
-            yield return FadeOut(fadeOutTime);
-            yield return FadeIn(fadeInTime);
         }
 
         public IEnumerator FadeOut(float waitTime)
@@ -35,10 +27,8 @@ namespace RPG.SceneManagement
             }
         }
 
-
         public IEnumerator FadeIn(float waitTime)
         {
- 
             while (canvasGroup.alpha > 0) //generally should not do comparisons between floats
             {
                 canvasGroup.alpha -= Time.deltaTime / waitTime;

@@ -8,6 +8,11 @@ namespace RPG.SceneManagement
 {
     public class Portal : MonoBehaviour
     {
+        [SerializeField] float fadeOutTime = 1f;
+        [SerializeField] float fadeInTime = 1f;
+        [SerializeField] float fadeWaitTime = 0f;
+        Fader fader;
+
         enum DestinationIdentifier
         {
             A, B, C, D, E
@@ -17,6 +22,12 @@ namespace RPG.SceneManagement
         [SerializeField] Transform spawnPoint;
         [SerializeField] DestinationIdentifier destination;
         DestinationIdentifier currentDestination;
+
+
+        private void Start()
+        {
+            fader = FindObjectOfType<Fader>();
+        }
 
         private void OnTriggerEnter(Collider otherCollider)
         {
@@ -35,10 +46,18 @@ namespace RPG.SceneManagement
                 yield break;
             }
 
+            transform.parent = null;
             DontDestroyOnLoad(gameObject);
+
+            yield return fader.FadeOut(fadeOutTime);
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
+
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
+
+            yield return new WaitForSeconds(fadeWaitTime);
+            yield return fader.FadeIn(fadeInTime);
+
             Destroy(gameObject);
         }
 
