@@ -17,9 +17,6 @@ namespace RPG.SceneManagement
 
         public IEnumerator FadeOut(float waitTime)
         {
-            print("fade out");
-            print("alpha " + canvasGroup.alpha);
-
             while (canvasGroup.alpha < 1) 
             {
                 canvasGroup.alpha += Time.deltaTime / waitTime;
