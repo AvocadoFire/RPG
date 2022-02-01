@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1596977713410140499}
   - component: {fileID: 7232791498431939623}
+  - component: {fileID: 4649351787414589032}
   - component: {fileID: 1596977713410140498}
   - component: {fileID: 1709954438}
   - component: {fileID: 1153201323}
@@ -50,6 +51,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 20
+  audioKill: {fileID: 0}
+--- !u!114 &4649351787414589032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596977713410140492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69473e850842ede4f8e99a2582201bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: 
 --- !u!195 &1596977713410140498
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -106,7 +121,6 @@ MonoBehaviour:
   timeBetweenAttacks: 1
   weaponRange: 2
   weaponDamage: 5
-  damping: 0.5
   audioHit: {fileID: 0}
 --- !u!114 &7845367209740182038
 MonoBehaviour:
@@ -132,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49101c1bd6536194bb98a73e5035e5ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 6
 --- !u!82 &6575984400755240210
 AudioSource:
   m_ObjectHideFlags: 0
