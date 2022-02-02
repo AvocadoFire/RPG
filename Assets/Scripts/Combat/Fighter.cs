@@ -32,6 +32,7 @@ namespace RPG.Combat
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
+            print("target = " + target);
 
             if (target == null || target.IsDead())
             {

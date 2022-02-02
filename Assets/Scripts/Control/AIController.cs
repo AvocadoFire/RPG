@@ -31,11 +31,15 @@ namespace RPG.Control
             fighter = GetComponent<Fighter>();
             mover = GetComponent<Mover>();
 
-            this.transform.position = patrolPath.GetWaypoint(0);
+            
         }
 
         private void Update()
         {
+            if (patrolPath != null) 
+            {
+                this.transform.position = patrolPath.GetWaypoint(0);
+            }
             timeSinceAtWaypoint += Time.deltaTime;
             timeSinceLastSawPlayer += Time.deltaTime;
 
