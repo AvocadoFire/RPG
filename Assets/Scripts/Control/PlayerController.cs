@@ -19,7 +19,7 @@ namespace RPG.Control
         {
             if (health.IsDead()) return;
             if (InteractWithCombat()) return;
-            if (InteractWithMovement()) return;    
+            if (InteractWithMovement()) return;
         }
 
         private bool InteractWithCombat()
@@ -30,12 +30,11 @@ namespace RPG.Control
                 CombatTarget target = hit.transform.GetComponent<CombatTarget>();
                 if (target == null)
                 {
-                    print("target null");
                     continue;
                 }
 
-                if (!GetComponent<Fighter>().CanAttack(target.gameObject))
-                { 
+                if (GetComponent<Fighter>().CanAttack(target.gameObject))
+                {
                     GetComponent<Fighter>().Attack(target.gameObject);
                 }
                 return true;

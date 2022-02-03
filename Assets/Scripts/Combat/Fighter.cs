@@ -32,7 +32,6 @@ namespace RPG.Combat
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
-            print("target = " + target);
 
             if (target == null || target.IsDead())
             {
@@ -90,8 +89,8 @@ namespace RPG.Combat
         public bool CanAttack(GameObject combatTarget)
         {
             Health targetHealth = GetComponent<Health>();
-            if (combatTarget == null) {return false; }
-            if (targetHealth.IsDead()) {return false; }
+            if (combatTarget == null) { print("combat target null");  return false; }
+            if (targetHealth.IsDead()) { print("target dead"); return false; }
             return true;
         }
 
