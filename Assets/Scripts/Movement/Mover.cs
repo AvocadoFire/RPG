@@ -1,18 +1,17 @@
-using RPG.Combat;
-using RPG.Core;
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using RPG.Core;
+using RPG.Saving;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace RPG.Movement
 {
-    public class Mover : MonoBehaviour, IAction
+    public class Mover : MonoBehaviour, IAction, ISaveable
     {
+        [SerializeField] Transform target;
         [SerializeField] float maxSpeed = 6f;
-        Ray lastRay;
-        float speed;
+
         NavMeshAgent navMeshAgent;
         Health health;
 
@@ -25,6 +24,7 @@ namespace RPG.Movement
         void Update()
         {
             navMeshAgent.enabled = !health.IsDead();
+
             UpdateAnimator();
         }
 
@@ -33,6 +33,7 @@ namespace RPG.Movement
             GetComponent<ActionScheduler>().StartAction(this);
             MoveTo(destination, speedFraction);
         }
+
         public void MoveTo(Vector3 destination, float speedFraction)
         {
             navMeshAgent.destination = destination;
@@ -43,15 +44,28 @@ namespace RPG.Movement
         public void Cancel()
         {
             navMeshAgent.isStopped = true;
-         }
+        }
 
-        void UpdateAnimator()
+        private void UpdateAnimator()
         {
-            var vel = navMeshAgent.velocity;
-            var localVelocity = transform.InverseTransformDirection(vel);
+            Vector3 velocity = navMeshAgent.velocity;
+            Vector3 localVelocity = transform.InverseTransformDirection(velocity);
             float speed = localVelocity.z;
             GetComponent<Animator>().SetFloat("forwardSpeed", speed);
         }
-    }
 
+        public object CaptureState()
+        {
+            return new SerializableVector3(transform.position);
+        }
+
+        public void RestoreState(object state)
+        {
+            SerializableVector3 position = (SerializableVector3)state;
+            GetComponent<NavMeshAgent>().enabled = false;
+            transform.position = position.ToVector();
+            GetComponent<NavMeshAgent>().enabled = true;
+            GetComponent<ActionScheduler>().CancelCurrentAction();
+        }
+    }
 }
