@@ -66,6 +66,7 @@ namespace RPG.Movement
             transform.position = position.ToVector();
             GetComponent<NavMeshAgent>().enabled = true;
             GetComponent<ActionScheduler>().CancelCurrentAction();
+
         }
     }
 }

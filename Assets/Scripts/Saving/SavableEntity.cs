@@ -12,7 +12,9 @@ namespace RPG.Saving
     {
         //easiest persist across reloads is a serialized field
         [SerializeField] string uniqueIdentifier = "";
-        
+        static Dictionary<string, SavableEntity> globalLookup 
+            = new Dictionary<string, SavableEntity>();
+
         public string GetUniqueIdentifier()
         {
             return uniqueIdentifier;
@@ -59,7 +61,29 @@ namespace RPG.Saving
                 property.stringValue = System.Guid.NewGuid().ToString();
                 serializedObject.ApplyModifiedProperties();
             }
-        } 
+            globalLookup[property.stringValue] = this;
+        }
 #endif
+
+        private bool IsUnique(string candidate)
+        {
+            if (!globalLookup.ContainsKey(candidate)) return true;
+
+            if (globalLookup[candidate] == this) return true;
+
+            if (globalLookup[candidate] == null)
+            {
+                globalLookup.Remove(candidate);
+                return true;
+            }
+
+            if (globalLookup[candidate].GetUniqueIdentifier() != candidate)
+            {
+                globalLookup.Remove(candidate);
+                return true;
+            }
+
+            return false;
+        }
     } 
 }
