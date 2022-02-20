@@ -30,16 +30,15 @@ namespace RPG.Control
             health = GetComponent<Health>();
             fighter = GetComponent<Fighter>();
             mover = GetComponent<Mover>();
-
-            
         }
 
         private void Update()
         {
-            if (patrolPath != null) 
-            {
-                this.transform.position = patrolPath.GetWaypoint(0);
-            }
+            //if (patrolPath == null)
+            //{
+            //    print("patrolPath null");
+            //    this.transform.position = patrolPath.GetWaypoint(0);
+            //}
             timeSinceAtWaypoint += Time.deltaTime;
             timeSinceLastSawPlayer += Time.deltaTime;
 
@@ -57,7 +56,7 @@ namespace RPG.Control
             }
             else
             {
-                PatrolBehavior();
+                   PatrolBehavior();
             }
         }
 

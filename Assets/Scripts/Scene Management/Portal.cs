@@ -10,26 +10,20 @@ namespace RPG.SceneManagement
 {
     public class Portal : MonoBehaviour
     {
+        enum DestinationIdentifier
+        {
+            A, B, C, D, E
+        } 
+
         [SerializeField] float fadeOutTime = 1f;
         [SerializeField] float fadeInTime = 1f;
         [SerializeField] float fadeWaitTime = 0f;
         Fader fader;
 
-        enum DestinationIdentifier
-        {
-            A, B, C, D, E
-        }
-
         [SerializeField] int sceneToLoad = -1;
         [SerializeField] Transform spawnPoint;
         [SerializeField] DestinationIdentifier destination;
         DestinationIdentifier currentDestination;
-
-
-        private void Start()
-        {
-
-        }
 
         private void OnTriggerEnter(Collider otherCollider)
         {
@@ -64,6 +58,7 @@ namespace RPG.SceneManagement
 
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
+
             savingWrapper.Save();
 
             yield return new WaitForSeconds(fadeWaitTime);

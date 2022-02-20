@@ -42,7 +42,8 @@ namespace RPG.Core
         {
             if (isDead) return;
 
-            anim.SetBool("die", true);
+            anim.SetTrigger("die");
+           // anim.SetBool("die", true);
             isDead = true;
             audioSource.PlayOneShot(audioKill);
             GetComponent<ActionScheduler>().CancelCurrentAction();

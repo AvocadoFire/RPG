@@ -56,7 +56,9 @@ namespace RPG.Saving
             //goes and finds serialization of this monobehavior and give it 
             //to us in a variable called serializedObject
 
-            if (string.IsNullOrEmpty(property.stringValue))
+            //this line is different copied from sam hmm had
+            //if (string.IsNullOrEmpty(property.stringValue))
+            if (string.IsNullOrEmpty(property.stringValue) || !IsUnique(property.stringValue))
             {
                 property.stringValue = System.Guid.NewGuid().ToString();
                 serializedObject.ApplyModifiedProperties();
