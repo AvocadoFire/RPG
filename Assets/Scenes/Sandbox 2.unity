@@ -791,7 +791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1311692459277011833, guid: e94155e0938956b46bca2247b95c4411, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.333104
+      value: 10.333415
       objectReference: {fileID: 0}
     - target: {fileID: 1311692459277011833, guid: e94155e0938956b46bca2247b95c4411, type: 3}
       propertyPath: m_LocalPosition.y
@@ -799,7 +799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1311692459277011833, guid: e94155e0938956b46bca2247b95c4411, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 45.885326
+      value: 45.931095
       objectReference: {fileID: 0}
     - target: {fileID: 1311692459277011833, guid: e94155e0938956b46bca2247b95c4411, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1019,7 +1019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5633909923744700052, guid: 7371301d91483c34dbc5d38b7b624cdf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.333104
+      value: 10.333415
       objectReference: {fileID: 0}
     - target: {fileID: 5633909923744700052, guid: 7371301d91483c34dbc5d38b7b624cdf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1027,7 +1027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5633909923744700052, guid: 7371301d91483c34dbc5d38b7b624cdf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 45.885326
+      value: 45.931095
       objectReference: {fileID: 0}
     - target: {fileID: 5633909923744700052, guid: 7371301d91483c34dbc5d38b7b624cdf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1090,6 +1090,10 @@ PrefabInstance:
     - target: {fileID: 816676945871819595, guid: 2e095eb004ee0744bb15bc89d12f7c79, type: 3}
       propertyPath: sceneToLoad
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 816676945871819595, guid: 2e095eb004ee0744bb15bc89d12f7c79, type: 3}
+      propertyPath: fadeWaitTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4737271179691475287, guid: 2e095eb004ee0744bb15bc89d12f7c79, type: 3}
       propertyPath: m_RootOrder
@@ -1406,12 +1410,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1024717}
     - target: {fileID: 816676945871819595, guid: 2e095eb004ee0744bb15bc89d12f7c79, type: 3}
+      propertyPath: fadeInTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 816676945871819595, guid: 2e095eb004ee0744bb15bc89d12f7c79, type: 3}
       propertyPath: destination
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 816676945871819595, guid: 2e095eb004ee0744bb15bc89d12f7c79, type: 3}
       propertyPath: sceneToLoad
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 816676945871819595, guid: 2e095eb004ee0744bb15bc89d12f7c79, type: 3}
+      propertyPath: fadeWaitTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4737271179691475287, guid: 2e095eb004ee0744bb15bc89d12f7c79, type: 3}
       propertyPath: m_RootOrder
