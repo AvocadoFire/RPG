@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1153201323, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d33da296c22bf3488ee3e2739b631a5, type: 2}
+    - target: {fileID: 1153201323, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
       propertyPath: audioHit
       value: 
       objectReference: {fileID: 8300000, guid: f5965d3ad3cf86b4e9d7863e570bb11a, type: 3}
@@ -19,6 +23,22 @@ PrefabInstance:
       propertyPath: weaponDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1153201323, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d33da296c22bf3488ee3e2739b631a5, type: 2}
+    - target: {fileID: 1153201323, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
+      propertyPath: handTransform
+      value: 
+      objectReference: {fileID: 2758250839460055402}
+    - target: {fileID: 1153201323, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
+      propertyPath: leftHandTransform
+      value: 
+      objectReference: {fileID: 7335957642394329953}
+    - target: {fileID: 1153201323, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
+      propertyPath: rightHandTransform
+      value: 
+      objectReference: {fileID: 2758250839460055402}
     - target: {fileID: 1709954438, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -174,14 +194,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5955309491817605965}
     m_Modifications:
-    - target: {fileID: 912842828671935925, guid: dc2b97cae25e32944bb5db05fd29e553, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 912842828671935925, guid: dc2b97cae25e32944bb5db05fd29e553, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 2af1df74941fde44eb16349aff3aa332, type: 2}
     - target: {fileID: 5836926591544681845, guid: dc2b97cae25e32944bb5db05fd29e553, type: 3}
       propertyPath: m_Name
       value: LPG92@T-Pose BAD
@@ -236,3 +248,13 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8cab5d05b73f4a64a9c88ac4d2498a2e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc2b97cae25e32944bb5db05fd29e553, type: 3}
+--- !u!4 &7335957642394329953 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 575863481620942311, guid: dc2b97cae25e32944bb5db05fd29e553, type: 3}
+  m_PrefabInstance: {fileID: 7076120740799131270}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2758250839460055402 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4932612386775082988, guid: dc2b97cae25e32944bb5db05fd29e553, type: 3}
+  m_PrefabInstance: {fileID: 7076120740799131270}
+  m_PrefabAsset: {fileID: 0}
