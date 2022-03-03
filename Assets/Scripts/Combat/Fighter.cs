@@ -87,8 +87,16 @@ namespace RPG.Combat
                StopAttack();
                return; 
             }
-            target.TakeDamage(currentWeapon.GetDamage());
-            audioSource.PlayOneShot(audioHit);
+            if (currentWeapon.HasProjectile())
+            {
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+            }
+            else
+            {
+                target.TakeDamage(currentWeapon.GetDamage());
+                audioSource.PlayOneShot(audioHit);
+            }
+
         }
         void Shoot()
         {
