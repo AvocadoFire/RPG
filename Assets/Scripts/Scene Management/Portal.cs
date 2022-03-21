@@ -55,6 +55,7 @@ namespace RPG.SceneManagement
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
 
             savingWrapper.Load();
+            yield return new WaitForEndOfFrame(); //added for null error 
 
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
@@ -64,7 +65,7 @@ namespace RPG.SceneManagement
             yield return new WaitForSeconds(fadeWaitTime);
             yield return fader.FadeIn(fadeInTime);
 
-            Destroy(gameObject);
+            Destroy(gameObject, 0.1f);
         }
 
          private Portal GetOtherPortal()

@@ -4,19 +4,21 @@ using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
 using System;
+using RPG.Saving;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour, IAction
+    public class Fighter : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField] AudioClip audioHit;
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
-
         [SerializeField] Weapon defaultWeapon = null;
+        //[SerializeField] string defaultWeaponName = "Unarmed";
 
         AudioSource audioSource;
         Animator anim;
+
         Health target;
         float timeSinceLastAttack = Mathf.Infinity;
         Weapon currentWeapon = null;
@@ -24,13 +26,16 @@ namespace RPG.Combat
         private void Awake()
         {
             audioSource = GetComponent<AudioSource>();
+            anim = GetComponent<Animator>();
+                //"attack" == finish attack animation (has exit time)
+                //"stopAttack" = stop animation (no exit time)
         }
         private void Start()
         {
-            anim = GetComponent<Animator>();
-            //"attack" == finish attack animation (has exit time)
-            //"stopAttack" = stop animation (no exit time)
-            EquipWeapon(defaultWeapon);
+            if(currentWeapon == null)
+            {
+                EquipWeapon(defaultWeapon);
+            }
         }
 
 
@@ -134,6 +139,18 @@ namespace RPG.Combat
         {
             anim.ResetTrigger("attack");
             anim.SetTrigger("stopAttack");
+        }
+
+        public object CaptureState()
+        {
+            return currentWeapon.name; //save string
+        }
+
+        public void RestoreState(object state) //we know it's a string
+        {
+            string weaponName = (string)state;
+            Weapon weapon = Resources.Load<Weapon>(weaponName);
+            EquipWeapon(weapon);
         }
     }
 }
