@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 489998, guid: 13af847dfa6dbe844ba4b7c902f98f67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.549
       objectReference: {fileID: 0}
     - target: {fileID: 489998, guid: 13af847dfa6dbe844ba4b7c902f98f67, type: 3}
       propertyPath: m_LocalPosition.y
@@ -80,9 +80,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 709955080707789199, guid: 7032a07b69c7a554b8a79586a33a70ab, type: 3}
+      propertyPath: m_Radius
+      value: 0.78789556
+      objectReference: {fileID: 0}
+    - target: {fileID: 709955080707789199, guid: 7032a07b69c7a554b8a79586a33a70ab, type: 3}
+      propertyPath: m_Center.x
+      value: 0.030372262
+      objectReference: {fileID: 0}
+    - target: {fileID: 709955080707789199, guid: 7032a07b69c7a554b8a79586a33a70ab, type: 3}
+      propertyPath: m_Center.y
+      value: 0.08596063
+      objectReference: {fileID: 0}
     - target: {fileID: 1687599653255051821, guid: 7032a07b69c7a554b8a79586a33a70ab, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3980583238357409578, guid: 7032a07b69c7a554b8a79586a33a70ab, type: 3}
       propertyPath: m_RootOrder
@@ -132,6 +144,10 @@ PrefabInstance:
       propertyPath: weapon
       value: 
       objectReference: {fileID: 11400000, guid: ea3f7747b44765b4eba67a714aac7888, type: 2}
+    - target: {fileID: 6303913218210602510, guid: 7032a07b69c7a554b8a79586a33a70ab, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8494817122590577383, guid: 7032a07b69c7a554b8a79586a33a70ab, type: 3}
       propertyPath: m_Name
       value: Sword Pickup
