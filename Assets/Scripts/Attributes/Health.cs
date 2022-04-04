@@ -1,10 +1,13 @@
+using RPG.Core;
 using RPG.Saving;
+using RPG.Stats;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace RPG.Core
+namespace RPG.Attributes
 {
     public class Health : MonoBehaviour, ISaveable
     {
@@ -20,12 +23,17 @@ namespace RPG.Core
             anim = GetComponent<Animator>();
         }
 
+        private void Start()
+        {
+            healthPoints = GetComponent <BaseStats>().GetHealth();
+        }
+
         public bool IsDead()
         {
             return isDead;
         }
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(GameObject instigator, float damage)
         {
             if (healthPoints > Mathf.Epsilon)
             {
@@ -35,7 +43,15 @@ namespace RPG.Core
             if (healthPoints <= Mathf.Epsilon)
             {
                 Die();
+                AwardExperience(instigator);
             }
+        }
+
+
+
+        public float GetPercentage()
+        {
+            return 100 * (healthPoints / GetComponent<BaseStats>().GetHealth());
         }
 
         private void Die()
@@ -47,6 +63,13 @@ namespace RPG.Core
             isDead = true;
             audioSource.PlayOneShot(audioKill);
             GetComponent<ActionScheduler>().CancelCurrentAction();
+        }
+
+        private void AwardExperience(GameObject instigator)
+        {
+            Experience experience = instigator.GetComponent<Experience>();
+            if (experience == null) return;
+            experience.GainExperience(GetComponent<BaseStats>().GetExperienceReward());
         }
 
         public object CaptureState()

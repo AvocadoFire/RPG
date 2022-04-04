@@ -5,6 +5,7 @@ using RPG.Movement;
 using RPG.Core;
 using System;
 using RPG.Saving;
+using RPG.Attributes;
 
 namespace RPG.Combat
 {
@@ -61,11 +62,7 @@ namespace RPG.Combat
                 AttackBehavior();
             }
         }
-        public void EquipWeapon(Weapon weapon)
-        {
-            currentWeapon = weapon;
-            weapon.Spawn(rightHandTransform, leftHandTransform, anim);
-        }
+
         private void AttackBehavior()
         {
             if (timeSinceLastAttack > currentWeapon.TimeBetweenAttacks())
@@ -94,11 +91,11 @@ namespace RPG.Combat
             }
             if (currentWeapon.HasProjectile())
             {
-                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject);
             }
             else
             {
-                target.TakeDamage(currentWeapon.GetDamage());
+                target.TakeDamage(gameObject, currentWeapon.GetDamage());
                 audioSource.PlayOneShot(audioHit);
             }
 
@@ -112,6 +109,16 @@ namespace RPG.Combat
         {
             return Vector3.Distance
                 (transform.position, target.transform.position) < currentWeapon.GetRange();
+        }
+        public void EquipWeapon(Weapon weapon)
+        {
+            currentWeapon = weapon;
+            weapon.Spawn(rightHandTransform, leftHandTransform, anim);
+        }
+
+        public Health GetTarget()
+        {
+            return target;
         }
 
         public bool CanAttack(GameObject combatTarget)

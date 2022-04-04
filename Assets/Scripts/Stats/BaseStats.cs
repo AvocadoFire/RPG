@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseStats : MonoBehaviour
+namespace RPG.Stats
 {
-    // Start is called before the first frame update
-    void Start()
+    public class BaseStats : MonoBehaviour
     {
-        
-    }
+        [Range(1, 99)]
+        [SerializeField] int startingLevel = 1;
+        [SerializeField] CharacterClass characterClass;
+        [SerializeField] Progression progression = null;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        public float GetHealth()
+        {
+            return progression.GetHealth(characterClass, startingLevel);
+        }
+
+        public float GetExperienceReward()
+        {
+            return 10;
+        }
+    } 
 }

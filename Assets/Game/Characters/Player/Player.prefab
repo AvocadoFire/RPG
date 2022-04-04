@@ -187,6 +187,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6402410213230471198, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
+      propertyPath: startingLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402410213230471198, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
+      propertyPath: characterClass
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7232791498431939623, guid: 15b33145f1e588f41b08efe0c312a7a2, type: 3}
       propertyPath: audioKill
       value: 
@@ -233,3 +241,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9cc438a7079bb74191564717bf4a6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &252389889789807686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999592239133690744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f0aa09c04585de40968e6f3175817f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experiencePoints: 0
